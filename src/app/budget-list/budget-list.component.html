@@ -1,0 +1,160 @@
+<!-- <H1>JKLNS MKBHJSN</H1>
+<div class="" *ngIf="budget_array.length != 0">
+    <div class="shadow">
+        <table class="table table-dark">
+          <thead>
+            <tr>
+                <th>S/N</th>
+                <th>Budget</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+          </thead>
+            <tbody>
+                <tr *ngFor="let id = index ;let budget of budget_array">
+                    <td>{{ id+1 }}</td>
+                    <td>{{ budget.goods }}</td>    
+                    <td>{{ budget.quantity}}</td>  
+                    <td>{{ budget.price}}</td>  
+                    <td><button class="btn btn-success" (click)="edit(id,budget)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></td>  
+                    <td> <button class="btn btn-danger" (click)="delete(id)">Delete</button></td>
+                    
+                <tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input type="text" class="form-control mb-2" placeholder="Add Budget" [(ngModel)]="goods">
+            <input type="text" class="form-control mb-2" placeholder="Quantity" [(ngModel)]="quantity">
+            <input type="text" class="form-control mb-2" placeholder="Price" [(ngModel)]="price">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <!-- <h2>CSS Layout Float</h2>
+  <p>{{ budget.title }}</p> -->
+  
+  <header style="padding: 4px; margin:2px;">
+    <div class="grid-container" style="background-color:rgb(74, 79, 219) ;">
+      <div class="item1">
+        <!-- <div class="text-end fw-bold text-white pe-5">
+          Urgent!  You have used 10% percent of your total budget
+        </div> -->
+        <div class="text-start">
+          <div class="text-uppercase">{{title}}</div>
+          <div class="text-white h5"><span>Price</span>:${{total}}</div>
+          <div class="h5">{{date}}</div>
+          <div class="h5"><span>Amt remaining</span>: <span [style]="style">${{remain}} {{mark}}</span></div>
+          <div class="h5"><span>amt spent</span>: <span>${{spent}}</span></div>
+        </div>
+      </div>
+      <p class="text-dark">{{messages}}</p>
+    </div>
+  </header>
+  
+  <section>
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class=" mx-auto shadow bg-light" style="background-color:rgb(54, 118, 182) ;">
+                    <div>
+                        <h5 class="display-4">Add Budget</h5>
+                        <p *ngIf="message!= ''" class="text-primary">{{message}}</p>
+                        <input type="text" class="form-control mb-2" placeholder="Add Items" [(ngModel)]="goods">
+                        <input type="text" class="form-control mb-2" placeholder="Quantity" [(ngModel)]="quantity">
+                        <input type="text" class="form-control mb-2" placeholder="Price" [(ngModel)]="price">
+                        <button class="btn btn-outline-success mb-2" (click)="createbudget()">Create budget</button>
+                        <button class="btn btn-outline-success mb-2" routerLink="/details/{{id+1}}">View Budget</button>
+                    </div>
+                </div>
+            </div><br>
+        </div>
+    </nav>
+    
+    <article>
+      <div class="" *ngIf="budget_array[id-1].items.length != 0">
+        <div class="shadow">
+            <table class="table text-dark">
+              <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Budget</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                    <th>Status</th>
+                </tr>
+              </thead>
+                <tbody>
+                    <tr *ngFor="let id = index ;let budget of budget_array[id-1].items">
+                        <td>{{ id+1 }}</td>
+                        <td>{{ budget.goods }}</td>    
+                        <td>{{ budget.quantity}}</td>  
+                        <td>{{ budget.price}}</td>  
+                        <td>{{ budget.price * budget.quantity}}</td>  
+                        <td><button class="btn btn-success" style="margin: auto;" (click)="edit(id)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <button class="btn btn-outline-danger" (click)="delete(id)">Delete</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <!-- <button class="btn btn-outline-warning" routerLink="budget/{{id+1}}">View</button> -->
+                        </td>  
+                        
+                        <td>
+                          <input type="checkbox" (change)="toCheck(id)" [checked]="budget.status">
+                          <span class="ms-2" *ngIf="budget.status == true">Purchased</span>
+                          <span class="ms-2" *ngIf="budget.status != true">Not-Purchased</span>
+                        </td>
+                        
+                    <tr>
+                </tbody>
+
+                <button class="btn btn-outline-success" routerLink="/details">View Category</button>
+    <button class="btn btn-outline-success" routerLink="/homes">Add Category</button>
+            </table>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control mb-2" [(ngModel)]="pgoods">
+                <input type="text" class="form-control mb-2" placeholder="Quantity" [(ngModel)]="pquantity">
+                <input type="text" class="form-control mb-2" placeholder="Price" [(ngModel)]="pprice">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="update()">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+   
+  </section>
+  
+  <footer>
+    
+  </footer>
+  

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="vh-100">
+    <div class="container ">
+        <div class="row ">
+            <div class=" col-5 mx-auto shadow" >
+                <div class=" text-dark">
+                    <h5 class="display-4">Add Budget App</h5>
+                    <p *ngIf="message!= ''" class="text-dark">{{message}}</p>
+                    <input type="text" class=" form-control mb-2" placeholder="Add Budget" [(ngModel)]="goods">
+                    <input type="text" class=" form-control mb-2" placeholder="Quantity" [(ngModel)]="quantity">
+                    <input type="text" class=" form-control mb-2" placeholder="Price" [(ngModel)]="price">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-success mb-2" (click)="createbudget()">Create budget</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-secondary mb-2" routerLink="/details">View Budget</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

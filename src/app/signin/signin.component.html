@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-7 mx-auto shadow">
+                 <div class=" p-5 ">
+                    <!-- template drive -->
+                    <form (ngSubmit)="signIn()">
+                        <h1 class="text-center text-primary">SIGN IN</h1>
+                        <input type="text" class="form-control mb-2" placeholder="Email" [(ngModel)]="email" name="email">
+
+                        <input appBudget type="password" class="form-control mb-2" placeholder="Password" [(ngModel)]="password" name="password" required  
+                        [class.is-valid]="fpassword.valid && fpassword.touched" [class.is-invalid]="fpassword.invalid && fpassword.touched" #fpassword="ngModel" >
+
+                        <div *ngIf="fpassword.invalid && fpassword.dirty">
+                            <span class="text-danger" *ngIf="fpassword.errors?.['required']">
+                              Field cannot be empty
+                            </span>
+                            <span class="text-danger" *ngIf="fpassword.errors?.['noCountryCode']">
+                                Please include at least one lowercase, uppercase, number and character and must up to eight.
+                             </span>
+                        </div>>
+                        <p>You don't have an account <b routerLink="/signup">   Signup</b>here</p>
+                        <button class="btn btn-outline-primary text-dark mb-2">SignIn</button>
+                    </form>
+                 </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

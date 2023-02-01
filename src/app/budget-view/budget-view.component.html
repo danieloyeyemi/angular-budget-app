@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="vh-100"  style="background-color:rgb(112, 124, 254)  ; background-color:rgb(59, 10, 65);">
+    <div><br><br>
+        <h3 class="text-center">Budget Category</h3>
+        <div class="row col-7 justify-content-center text-light" *ngIf="budget_array.length!==0"> 
+            <div class="card m-5 col-4 text-dark" *ngFor="let id = index ;let budget of budget_array">
+                <div class="card-body" >
+                    
+                    <a class="text-decoration-none text-dark" routerLink="details/{{id+1}}">{{budget.title}}</a><br>
+                    <span>{{budget.date}}</span>
+                    <div>
+                        <button class="btn btn-success text-light" (click)="edit(id,budget)" data-bs-toggle="modal"data-bs-target="#exampleModal">Edit</button>&nbsp;
+                        <button class="btn btn-warning text-light" style="background-color:blue  ;" (click)="delete(id)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" [(ngModel)]="title" class="form-control">
+                <input type="text" [(ngModel)]="amount" class="form-control">
+                <input type="date" [(ngModel)]="date" class="form-control">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="update()">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

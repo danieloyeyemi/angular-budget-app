@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto shadow"><br>
+                <div class="row">
+                    <div class="text-success">
+                        <h2>Welcome here Please signup</h2>
+                    </div>
+                    <div class="justify-content-center ">
+                        <form [formGroup]="userForm" (ngSubmit)="signUp()">
+                            <h1 class="text-primary text-center">SIGN UP</h1>
+                            <p class="text-danger">{{message}}</p>
+
+                            <input type="text" class="form-control mb-2" placeholder="Full name"
+                                formControlName="full_name" 
+                                [class.is-valid]="userForm.get('full_name')?.valid"
+                                [class.is-invalid]="userForm.get('full_name')?.invalid">
+                            <div *ngIf="userForm.get('full_name')?.invalid && userForm.get('full_name')?.dirty">
+                                <span class="text-danger" [*ngIf="userForm.get('full_name').errors['required']"]>
+                                    Input can not be empty
+                                </span>
+
+                                <span class="text-danger" [*ngIf="userForm.get('full_name').errors['minlength']"]>
+                                    Minimium length is 10
+                                </span>
+                            </div>
+
+
+                            <input type="text" class="form-control mb-2" placeholder="Phone Number"
+                                formControlName="phone_no" [class.is-valid]="userForm.get('phone_no')?.valid"
+                                [class.is-invalid]="userForm.get('phone_no')?.invalid">
+
+                            <input type="text" class="form-control mb-2" placeholder="Address"
+                                formControlName="address"
+                                [class.is-valid]="userForm.get('address')?.valid"
+                                [class.is-invalid]="userForm.get('address')?.invalid">
+                            <div *ngIf="userForm.get('faddress')?.invalid && userForm.get('address')?.dirty">
+                                <span class="text-danger" [*ngIf="userForm.get('address').errors['required']"]>
+                                    Input can not be empty
+                                </span>
+
+                                <span class="text-danger" [*ngIf="userForm.get('address').errors['minlength']"]>
+                                    Minimium length is 7
+                                </span>
+                            </div>
+
+                            <input type="text" class="form-control mb-2" placeholder="Email" formControlName="email">
+
+                            <input type="password" class="form-control mb-2" placeholder="Password"
+                                formControlName="password"
+                                [class.is-valid]="userForm.get('password')?.valid"
+                                [class.is-invalid]="userForm.get('password')?.invalid">
+                                <span class="text-danger" *ngIf="userForm.get('password')?.errors?.['pattern']">
+                                    Field cannot be empty
+                                  </span>
+                            <p class="">You already have an account with us <b routerLink="/signin">SignIn</b> here</p>
+                            <button class="btn btn-outline-success  mb-2 signup">Signup</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!-- <h3>Budget-App</h3> -->
+<!-- <p>Welcome to Our Budget app. Our Budget app Provides you with the opportunity to add your Budget and specify your Amount for each category and an Amount to it</p> -->
