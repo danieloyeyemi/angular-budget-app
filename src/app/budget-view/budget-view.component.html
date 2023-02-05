@@ -9,8 +9,8 @@
 <body class="vh-100"  style="background-color:rgb(112, 124, 254)  ; background-color:rgb(59, 10, 65);">
     <div><br><br>
         <h3 class="text-center">Budget Category</h3>
-        <div class="row col-7 justify-content-center text-light" *ngIf="budget_array.length!==0"> 
-            <div class="card m-5 col-4 text-dark" *ngFor="let id = index ;let budget of budget_array">
+        <div class="row col-lg-7 col-md-5 justify-content-center text-light" *ngIf="budget_array.length!==0"> 
+            <div class="card m-5 col-lg-4 col-md-3 text-dark" *ngFor="let id = index ;let budget of budget_array">
                 <div class="card-body" >
                     
                     <a class="text-decoration-none text-dark" routerLink="details/{{id+1}}">{{budget.title}}</a><br>
